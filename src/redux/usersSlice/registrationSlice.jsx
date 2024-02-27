@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const url = 'http://localhost:3000/signup/sign_up';
+const url = 'http://localhost:4000/signup';
 
 export const fetchRegistration = createAsyncThunk(
-  'message/fetchRegistration',
+  'user/fetchRegistration',
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(url);
@@ -16,12 +16,15 @@ export const fetchRegistration = createAsyncThunk(
 );
 
 const initialState = {
+  status: 'idle',
+  userToken: '',
+  error: null,
   message: '',
   isLoading: true,
 };
 
 const registrationSlice = createSlice({
-  name: 'message',
+  name: 'user',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -31,7 +34,7 @@ const registrationSlice = createSlice({
       isLoading: false,
     }));
     builder.addCase(fetchRegistration.rejected, (state, action) => {
-      console.error('Error fetching registration:', action.payload);
+      console.error('Error fetching registration form:', action.payload);
       return {
         ...state,
         isLoading: false,
@@ -39,4 +42,5 @@ const registrationSlice = createSlice({
     });
   },
 });
+
 export default registrationSlice.reducer;
