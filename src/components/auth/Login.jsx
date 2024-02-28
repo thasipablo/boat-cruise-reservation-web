@@ -21,14 +21,12 @@ export default class Login extends Component {
         },
       },
       {
-        withCredentials: true, // Ensure this is set
+        withCredentials: true,
       },
     ).then((response) => {
       console.log('login response', response);
-      // Handle successful login, e.g., redirect to another page
     }).catch((error) => { console.log('error', error); });
     event.preventDefault();
-    // Add your form submission logic here
   }
 
   handleChange = (event) => {
