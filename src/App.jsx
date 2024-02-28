@@ -1,12 +1,19 @@
-import React from 'react'; // Add this line if it's missing
+import React from 'react';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import Registration from './components/auth/Registration';
+import Login from './components/auth/Login';
 
 function App() {
   return (
+
     <div>
-      <Registration />
+      <Routes>
+        <Route path="/" element={<Registration />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </div>
+
   );
 }
 
