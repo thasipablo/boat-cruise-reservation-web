@@ -1,20 +1,15 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css';
-import Home from './pages/Home';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Login from './pages/Login';
-import Registration from './pages/Registration';
+import Home from './pages/Home';
 
 function App() {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route path="/register" element={<Registration />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+    <div>
+      {isAuthenticated ? <Home /> : <Login />}
+    </div>
   );
 }
 
