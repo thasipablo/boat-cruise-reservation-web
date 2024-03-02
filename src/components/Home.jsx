@@ -1,10 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Navbar from './Navbar';
 
 const getUser = () => {
-  const user = localStorage.getItem('user');
-  return user ? JSON.parse(user) : null;
+  const userString = localStorage.getItem('user');
+
+  try {
+    if (userString) {
+      const user = JSON.parse(userString);
+      return user;
+    }
+  } catch (error) {
+    console.error('Error parsing user JSON:', error);
+  }
+
+  return null;
 };
 
 const getAuthToken = () => localStorage.getItem('authToken');
@@ -39,7 +50,7 @@ const LogoutButton = () => {
       if (response.ok) {
         console.log('Logout successful');
         localStorage.removeItem('user');
-        window.location.reload(); // Refresh the page
+        window.location.reload();
       } else {
         const errorMessage = await response.text();
         throw new Error(errorMessage);
@@ -66,24 +77,35 @@ const LogoutButton = () => {
   );
 };
 
-const Home = () => (
-  <div>
-    {getUser() ? (
-      <>
-        <h4>
-          Hello
-          {' '}
-          {getUser().name}
-        </h4>
-        <LogoutButton />
-      </>
-    ) : (
-      <div>
-        <Link to="/register">Register</Link>
-        <Link to="/login">Login</Link>
-      </div>
-    )}
-  </div>
-);
+const Home = () => {
+  const user = getUser();
 
+  return (
+    <div>
+      {user ? (
+        <>
+          <Navbar />
+          <div className="d-flex align-items-center min-vh-100">
+            <div className="mx-auto">
+              <h4>
+                Hello,
+                {user.name}
+              </h4>
+              <LogoutButton />
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="auth-links">
+          <div className="d-flex align-items-center min-vh-100">
+            <div className="mx-auto">
+              <Link to="/register" className="btn btn-primary mr-2">Register</Link>
+              <Link to="/login" className="btn btn-secondary">Login</Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 export default Home;

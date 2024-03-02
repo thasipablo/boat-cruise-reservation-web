@@ -5,34 +5,50 @@ import { registerUser } from '../redux/slices/userSlice';
 
 const Registration = () => {
   const [name, setName] = useState('');
+  const [Error, setError] = useState('');
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
-
-  const handleRegisterEvent = async (e) => {
+  const handleRegisterEvent = (e) => {
     e.preventDefault();
-    try {
-      await dispatch(registerUser({ name }));
-      navigate('/login');
-    } catch (err) {
-      console.error('Registration Error:', err);
+    if (name.trim(Error) === '') {
+      setError('Name cannot be empty');
+      return;
     }
+    dispatch(registerUser({ name }))
+      .then(() => {
+        navigate('/login');
+      })
+      .catch((err) => {
+        console.error('Register Error:', err);
+        navigate('/register');
+      });
   };
+
   return (
-    <div>
-      <h2>Registration</h2>
-      <form onSubmit={handleRegisterEvent}>
-        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-        <br />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Loading...' : 'Register'}
-        </button>
-        {error && (
-          <div role="alert">
+    <div className="d-flex align-items-center min-vh-100">
+      <div className="mx-auto p-4 border rounded">
+        <h2 className="mb-4">Registration</h2>
+        <form onSubmit={handleRegisterEvent}>
+          <div className="mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <button type="submit" className="btn btn-primary" disabled={loading}>
+            {loading ? 'Loading...' : 'Register'}
+          </button>
+          {error && (
+          <div className="alert alert-danger" role="alert">
             {error}
           </div>
-        )}
-      </form>
+          )}
+        </form>
+      </div>
     </div>
   );
 };
