@@ -39,6 +39,7 @@ const LogoutButton = () => {
       if (response.ok) {
         console.log('Logout successful');
         localStorage.removeItem('user');
+        window.location.reload(); // Refresh the page
       } else {
         const errorMessage = await response.text();
         throw new Error(errorMessage);
