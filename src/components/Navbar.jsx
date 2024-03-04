@@ -1,4 +1,5 @@
 import './nav.css';
+import LogoutButton from './logout_button/LogoutButton';
 
 function Navbar() {
   return (
@@ -20,6 +21,9 @@ function Navbar() {
 
         <li className="nav-item">
           <a className="nav-link text-dark" href="/">DELETE MOTOCYCLE</a>
+        </li>
+        <li>
+          <LogoutButton />
         </li>
       </ul>
     </div>

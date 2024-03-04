@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import Registration from './components/Registration';
 import Login from './components/Login';
-import Home from './components/Home';
+import Home from './pages/Home';
 
 function App() {
   return (
