@@ -1,28 +1,36 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../redux/slices/userSlice';
 
 const Registration = () => {
   const [name, setName] = useState('');
-  const [Error, setError] = useState('');
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.user);
+  const { loading } = useSelector((state) => state.user);
   const navigate = useNavigate();
-  const handleRegisterEvent = (e) => {
+
+  const handleRegisterEvent = async (e) => {
     e.preventDefault();
-    if (name.trim(Error) === '') {
-      setError('Name cannot be empty');
+    if (name.trim() === '') {
+      toast.error('Name cannot be empty');
       return;
     }
-    dispatch(registerUser({ name }))
-      .then(() => {
+
+    try {
+      const result = await dispatch(registerUser({ name }));
+      if (result.ok) {
         navigate('/login');
-      })
-      .catch((err) => {
-        console.error('Register Error:', err);
+      } else {
+        console.error('Registration Error:', result.error);
+        toast.error('This identifier is already in use.');
         navigate('/register');
-      });
+      }
+    } catch (err) {
+      console.error('Registration Error:', err);
+      toast.error('An unexpected error occurred.');
+    }
   };
 
   return (
@@ -42,12 +50,8 @@ const Registration = () => {
           <button type="submit" className="btn btn-primary" disabled={loading}>
             {loading ? 'Loading...' : 'Register'}
           </button>
-          {error && (
-          <div className="alert alert-danger" role="alert">
-            {error}
-          </div>
-          )}
         </form>
+        <ToastContainer />
       </div>
     </div>
   );
