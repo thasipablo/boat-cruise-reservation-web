@@ -1,22 +1,7 @@
+// components/LogoutButton.jsx
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Navbar from './Navbar';
-
-const getUser = () => {
-  const userString = localStorage.getItem('user');
-
-  try {
-    if (userString) {
-      const user = JSON.parse(userString);
-      return user;
-    }
-  } catch (error) {
-    console.error('Error parsing user JSON:', error);
-  }
-
-  return null;
-};
 
 const getAuthToken = () => localStorage.getItem('authToken');
 
@@ -77,35 +62,4 @@ const LogoutButton = () => {
   );
 };
 
-const Home = () => {
-  const user = getUser();
-
-  return (
-    <div>
-      {user ? (
-        <>
-          <Navbar />
-          <div className="d-flex align-items-center min-vh-100">
-            <div className="mx-auto">
-              <h4>
-                Hello,
-                {user.name}
-              </h4>
-              <LogoutButton />
-            </div>
-          </div>
-        </>
-      ) : (
-        <div className="auth-links">
-          <div className="d-flex align-items-center min-vh-100">
-            <div className="mx-auto">
-              <Link to="/register" className="btn btn-primary mr-2">Register</Link>
-              <Link to="/login" className="btn btn-secondary">Login</Link>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-export default Home;
+export default LogoutButton;

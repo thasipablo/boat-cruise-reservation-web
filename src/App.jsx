@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import Registration from './components/Registration';
 import Login from './components/Login';
-import Home from './components/Home';
+import Home from './pages/Home';
+import AddNewBoat from './components/boats/AddNewBoat';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route exact path="/" element={<Home />} />
             <Route exact path="/login" element={<Login />} />
             <Route path="/register" element={<Registration />} />
+            <Route path="/new-boat" element={<AddNewBoat />} />
           </Routes>
         </Provider>
       </div>
