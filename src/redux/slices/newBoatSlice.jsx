@@ -2,20 +2,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const newBoat = createAsyncThunk('addNewBoat/', async (boatData) => {
+export const newBoat = createAsyncThunk('boat/addNewBoat', async (boatData) => {
+  console.log(boatData);
   try {
     const response = await axios.post('http://localhost:3000/api/boats', boatData);
+    console.log(boatData);
     localStorage.setItem('boat', JSON.stringify(response.data.data));
-    console.log('Fetched data in addNewBoat:', response.data.data);
     return response.data.data;
   } catch (error) {
-    console.error('Error in addNewBoat:', error.message);
-    throw error;
+    console.error(error);
+    return undefined;
   }
 });
 
 const newBoatSlice = createSlice({
-  name: 'boat',
+  name: 'newBoat',
   initialState: {
     loading: false,
     user: null,
@@ -39,12 +40,13 @@ const newBoatSlice = createSlice({
         state.user = null;
         console.error('Error in addNewBoat:', action.error.message);
         if (action.error.message === 'Request failed with status code 401') {
-          state.error = 'Access denied! Invalid credentials';
+          state.error = 'rejected';
         } else {
           state.error = action.error.message;
         }
       });
   },
 });
+
 export default newBoatSlice.reducer;
 /* eslint-disable no-param-reassign */

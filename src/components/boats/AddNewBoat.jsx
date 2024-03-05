@@ -8,29 +8,24 @@ const AddNewBoat = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
-  const [financeFee, setFinanceFee] = useState('');
-  const [optionToPurchaseFee, setOptionToPurchaseFee] = useState('');
+  const [finance, setFinance] = useState('');
+  const [option, setOption] = useState('');
   const [duration, setDuration] = useState('');
-  const [amountPayable, setAmountPayable] = useState('');
-  const [availability, setAvailability] = useState('');
-  const [Error, setError] = useState('');
+  const [amount, setAmount] = useState('');
+  const [availability, setAvailability] = useState('false');
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const handleNewBoatEvent = (e) => {
     e.preventDefault();
-    if (Error.trim() !== '') {
-      setError('Field cannot be empty');
-      return;
-    }
     dispatch(newBoat({
       name,
       description,
       image,
-      financeFee,
-      optionToPurchaseFee,
+      finance,
+      option,
       duration,
-      amountPayable,
+      amount,
       availability,
     }))
       .then(() => {
@@ -38,10 +33,12 @@ const AddNewBoat = () => {
       })
       .catch((err) => {
         console.error('Add New Boat Error:', err);
-        navigate('/new-boat');
+        if (err.response) {
+          console.error('Server Response:', err.response);
+          console.error('Server Response Data:', err.response.data);
+        }
       });
   };
-
   return (
     <div className="d-flex align-items-center min-vh-100">
       <div className="mx-auto p-4 border rounded">
@@ -71,17 +68,18 @@ const AddNewBoat = () => {
             />
             <input
               type="number"
+              step="0.01"
               className="form-control"
               placeholder="Finance-Fee"
-              value={financeFee}
-              onChange={(e) => setFinanceFee(e.target.value)}
+              value={finance}
+              onChange={(e) => setFinance(Number(e.target.value))}
             />
             <input
               type="number"
               className="form-control"
               placeholder="Option to purchase fee"
-              value={optionToPurchaseFee}
-              onChange={(e) => setOptionToPurchaseFee(e.target.value)}
+              value={option}
+              onChange={(e) => setOption(e.target.value)}
             />
             <input
               type="number"
@@ -92,18 +90,21 @@ const AddNewBoat = () => {
             />
             <input
               type="number"
+              step="0.01"
               className="form-control"
               placeholder="Amount-payable"
-              value={amountPayable}
-              onChange={(e) => setAmountPayable(e.target.value)}
+              value={amount}
+              onChange={(e) => setAmount(Number(e.target.value))}
             />
-            <input
-              type="boolean"
-              className="form-control"
-              placeholder="Availability"
+            <select
+              className="form-select"
+              id="availabilitySelect"
               value={availability}
               onChange={(e) => setAvailability(e.target.value)}
-            />
+            >
+              <option value="true">Available</option>
+              <option value="false">Not Available</option>
+            </select>
           </div>
           <button type="submit" className="btn btn-primary" disabled={loading}>
             {loading ? 'Loading...' : 'Register'}
