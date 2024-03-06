@@ -17,8 +17,8 @@
 }
 
 .boat-img {
-	width: 300px;
-	height: auto;
+  width: 300px;
+  height: auto;
 }
 
 .boat_item,
@@ -33,7 +33,6 @@
   font-weight: 600;
   margin-top: 1rem;
 }
-
 
 .boat_item h2 {
   border-bottom: 5px dotted #b4b4b4;
@@ -80,7 +79,6 @@
 .splide__pagination__page.is-active {
   background-color: #e82127;
 }
-
 
 /* Boat Details */
 .boat_details {
@@ -131,7 +129,7 @@
 }
 
 .boat_expense li p {
-  margin: 0px;
+  margin: 0;
   background-color: transparent !important;
 }
 
