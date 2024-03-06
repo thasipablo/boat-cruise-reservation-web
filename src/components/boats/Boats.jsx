@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import { fetchBoats } from '../../redux/slices/boatSlice';
 import SplideCarousel from '../carousel/SplideCarousel';
 import '../../styles/boats/boats.css';
 
-function Boats() {
+function Boats({ onBoatClick }) {
   const dispatch = useDispatch();
   const boats = useSelector((state) => state.boats.data);
   const loading = useSelector((state) => state.boats.loading);
@@ -26,9 +27,13 @@ function Boats() {
 
   return (
     <div>
-      <SplideCarousel boats={boats} />
+      <SplideCarousel boats={boats} onBoatClick={onBoatClick} />
     </div>
   );
 }
+
+Boats.propTypes = {
+  onBoatClick: PropTypes.func.isRequired,
+};
 
 export default Boats;

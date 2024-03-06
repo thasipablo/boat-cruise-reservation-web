@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -5,7 +7,7 @@ import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import { MdOutlinePlayArrow } from 'react-icons/md';
 import '@splidejs/react-splide/css';
 
-const SplideCarousel = ({ boats }) => {
+const SplideCarousel = ({ boats, onBoatClick }) => {
   const truncateDescription = (description, maxLength) => (description.length > maxLength ? `${description.substring(0, maxLength)}...` : description);
   return (
     <Splide
@@ -38,7 +40,7 @@ const SplideCarousel = ({ boats }) => {
       <SplideTrack className="boat_list_container">
         {boats.map((boat) => (
           <SplideSlide key={boat.id}>
-            <div className="boat_item">
+            <div className="boat_item" onClick={() => onBoatClick(boat)}>
               <img src={boat.image} alt={boat.name} className="boat-img" />
               <div className="boat_description">
                 <h2>{boat.name}</h2>
@@ -67,6 +69,7 @@ const SplideCarousel = ({ boats }) => {
 
 SplideCarousel.propTypes = {
   boats: PropTypes.arrayOf(Object).isRequired,
+  onBoatClick: PropTypes.func.isRequired,
 };
 
 SplideCarousel.defaultProps = {};
