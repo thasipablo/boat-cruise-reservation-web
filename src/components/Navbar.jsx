@@ -10,7 +10,7 @@ function Navbar() {
           <a className="nav-link active" aria-current="page" href="/">MODELS</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link text-dark" href="/">RESERVE</a>
+          <a className="nav-link text-dark" href="/reservation">RESERVE</a>
         </li>
         <li className="nav-item">
           <a className="nav-link text-dark" href="/">MY RESERVATIONS</a>

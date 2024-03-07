@@ -59,10 +59,10 @@ BoatDetails.propTypes = {
     description: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     availability: PropTypes.bool.isRequired,
-    finance_fee: PropTypes.number.isRequired,
-    option_to_purchase_fee: PropTypes.number.isRequired,
+    finance_fee: PropTypes.number,
+    option_to_purchase_fee: PropTypes.number,
     duration: PropTypes.number.isRequired,
-    amount_payable: PropTypes.number.isRequired,
+    amount_payable: PropTypes.number,
   }).isRequired,
   onBack: PropTypes.func.isRequired,
 };
