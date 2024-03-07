@@ -41,7 +41,7 @@ const SplideCarousel = ({ boats, onBoatClick }) => {
         {boats.map((boat) => (
           <SplideSlide key={boat.id}>
             <div
-              className="boat_item"
+              className="boat_item m-2"
               onClick={() => {
                 onBoatClick(boat);
                 localStorage.setItem('boatid', [boat.id]);
