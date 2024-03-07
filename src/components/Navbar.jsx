@@ -4,7 +4,7 @@ import LogoutButton from './logout_button/LogoutButton';
 function Navbar() {
   return (
     <div className="" id="nav">
-      <ul className="nav flex-column border border-1">
+      <ul className="nav flex-column border-end border-1">
         <h1 className="marge pt-3 pb-3 ">Logo</h1>
         <li className="nav-item">
           <a className="nav-link active" aria-current="page" href="/">MODELS</a>

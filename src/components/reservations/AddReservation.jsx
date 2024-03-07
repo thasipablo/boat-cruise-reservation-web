@@ -14,7 +14,6 @@ function Reservation() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (date.trim() && city.trim()) {
-      console.log(userId);
       setMessage('start');
       let obj = {
         user_id: userId, boat_id: boatId, date, city,
