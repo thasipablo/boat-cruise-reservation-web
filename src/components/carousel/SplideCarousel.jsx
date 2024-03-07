@@ -40,7 +40,14 @@ const SplideCarousel = ({ boats, onBoatClick }) => {
       <SplideTrack className="boat_list_container">
         {boats.map((boat) => (
           <SplideSlide key={boat.id}>
-            <div className="boat_item" onClick={() => onBoatClick(boat)}>
+            <div
+              className="boat_item"
+              onClick={() => {
+                onBoatClick(boat);
+                localStorage.setItem('boatid', [boat.id]);
+                localStorage.setItem('boatname', [boat.name]);
+              }}
+            >
               <img src={boat.image} alt={boat.name} className="boat-img" />
               <div className="boat_description">
                 <h2>{boat.name}</h2>
