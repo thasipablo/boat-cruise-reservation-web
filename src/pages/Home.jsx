@@ -48,7 +48,7 @@ const Home = () => {
             </div>
             <Navbar />
           </div>
-          <div className="col-md-6">
+          <div className="col-md-9">
             <Layout />
           </div>
         </div>
