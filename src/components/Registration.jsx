@@ -1,38 +1,29 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../redux/slices/userSlice';
 
 const Registration = () => {
   const [name, setName] = useState('');
+  const [Error, setError] = useState('');
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.user);
   const navigate = useNavigate();
-
-  const handleRegisterEvent = async (e) => {
+  const handleRegisterEvent = (e) => {
     e.preventDefault();
-    if (name.trim() === '') {
-      toast.error('Name cannot be empty');
+    if (name.trim(Error) === '') {
+      setError('Name cannot be empty');
       return;
     }
-
-    try {
-      const result = await dispatch(registerUser({ name }));
-      if (result.ok) {
+    dispatch(registerUser({ name }))
+      .then(() => {
         navigate('/login');
-      } else {
-        console.error('Registration Error:', result.error);
-        toast.error('This identifier is already in use.');
+      })
+      .catch((err) => {
+        console.error('Register Error:', err);
         navigate('/register');
-      }
-    } catch (err) {
-      console.error('Registration Error:', err);
-      toast.error('An unexpected error occurred.');
-    }
+      });
   };
-
   return (
     <div className="d-flex align-items-center min-vh-100">
       <div className="mx-auto p-4 border rounded">
@@ -51,10 +42,8 @@ const Registration = () => {
             {loading ? 'Loading...' : 'Register'}
           </button>
         </form>
-        <ToastContainer />
       </div>
     </div>
   );
 };
-
 export default Registration;
