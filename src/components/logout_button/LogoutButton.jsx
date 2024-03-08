@@ -50,7 +50,7 @@ const LogoutButton = () => {
 
   return (
     <div>
-      <button type="button" onClick={handleLogout} disabled={reduxLoading}>
+      <button type="button" className="bg-transparent border-0 ms-3" onClick={handleLogout} disabled={reduxLoading}>
         {reduxLoading ? 'Logging out...' : 'Logout'}
       </button>
       {reduxError && (

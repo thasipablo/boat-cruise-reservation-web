@@ -4,7 +4,6 @@ import { sendReservation } from '../../redux/slices/reservationSlice';
 
 function Reservation() {
   const dispatch = useDispatch();
-  const [message, setMessage] = useState('nothing');
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
   const user = localStorage.getItem('user');
@@ -14,17 +13,12 @@ function Reservation() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (date.trim() && city.trim()) {
-      console.log(userId);
-      setMessage('start');
       let obj = {
         user_id: userId, boat_id: boatId, date, city,
       };
       await dispatch(sendReservation(obj));
       obj = {};
-      setMessage('done');
       document.location.href = '/';
-    } else {
-      setMessage('error');
     }
   };
   return (
@@ -64,7 +58,6 @@ function Reservation() {
             }}
           />
         </div>
-        <small>{message}</small>
         <button type="submit" onClick={handleSubmit} className="btn btn-primary">Submit</button>
       </form>
       <div className="col-md-3"> </div>
