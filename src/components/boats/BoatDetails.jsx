@@ -25,11 +25,11 @@ const BoatDetails = ({ boat, onBack }) => {
         <ul className="boat_expense">
           <li>
             <p>finance_fee</p>
-            {boat.finance_fee}
+            {boat.finance}
           </li>
           <li>
             <p>Option to purchase fee</p>
-            {boat.option_to_purchase_fee}
+            {boat.option}
           </li>
           <li>
             <p>Duration</p>
@@ -37,7 +37,7 @@ const BoatDetails = ({ boat, onBack }) => {
           </li>
           <li>
             <p>Total amount payable</p>
-            {boat.amount_payable}
+            {boat.amount}
           </li>
           <li>
             <p>Availability</p>
@@ -59,10 +59,10 @@ BoatDetails.propTypes = {
     description: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     availability: PropTypes.bool.isRequired,
-    finance_fee: PropTypes.number,
-    option_to_purchase_fee: PropTypes.number,
+    finance: PropTypes.number,
+    option: PropTypes.number,
     duration: PropTypes.number.isRequired,
-    amount_payable: PropTypes.number,
+    amount: PropTypes.number,
   }).isRequired,
   onBack: PropTypes.func.isRequired,
 };
