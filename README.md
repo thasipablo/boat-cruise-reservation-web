@@ -74,7 +74,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo](https://budget-app-u8sh.onrender.com/)
+- N/A
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
