@@ -37,7 +37,7 @@ const Home = () => {
     <>
       {user ? (
         <div className="homepage-container row">
-          <div className="col-md-3">
+          <div className="col-md-2">
             <div id="mobile">
               <svg onClick={handleDisplay} id="menu" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" className="bi bi-list m-3" viewBox="0 0 16 16">
                 <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
@@ -48,7 +48,7 @@ const Home = () => {
             </div>
             <Navbar />
           </div>
-          <div className="col-md-9">
+          <div className="col-md-10">
             <Layout />
           </div>
         </div>

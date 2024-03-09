@@ -10,7 +10,7 @@ const BoatDetails = ({ boat, onBack }) => {
   };
   return (
     <div className="boat_details row">
-      <div className="boat_details_img_container col-md-6">
+      <div className="boat_details_img_container col-md-5">
         <div className="selected_boat_img"><img src={boat.image} alt={boat.name} /></div>
         <div className="splide__arrows">
           <button type="button" className="splide__arrow splide__arrow--prev" onClick={handleBack}>
