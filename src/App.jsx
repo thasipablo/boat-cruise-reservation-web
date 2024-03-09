@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import AddNewBoat from './components/boats/AddNewBoat';
 import AddReservation from './components/reservations/AddReservation';
 import MyReservations from './components/reservations/MyReservations';
+import DeleteBoat from './components/boats/DeleteBoat';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/register" element={<Registration />} />
             <Route path="/new-boat" element={<AddNewBoat />} />
             <Route path="/my-reservations" element={<MyReservations />} />
+            <Route path="/delete-boat" element={<DeleteBoat />} />
           </Routes>
         </Provider>
       </div>

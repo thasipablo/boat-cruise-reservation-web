@@ -5,6 +5,24 @@ export const fetchBoats = createAsyncThunk('boats/fetchBoats', async () => {
   return response.json();
 });
 
+export const fetchToDeleteBoats = createAsyncThunk('boats/fetchToDeleteBoats', async (boatId) => {
+  try {
+    console.log('Deleting boat with id:', boatId); // Log boat deletion
+    const response = await fetch(`http://localhost:3000/api/boats/${boatId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log('Delete response:', data); // Log delete response
+    return data;
+  } catch (error) {
+    console.error('Delete error:', error); // Log delete error
+    throw error;
+  }
+});
+
 const boatSlice = createSlice({
   name: 'boats',
   initialState: {
@@ -23,6 +41,17 @@ const boatSlice = createSlice({
         state.data = action.payload;
       })
       .addCase(fetchBoats.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(fetchToDeleteBoats.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchToDeleteBoats.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(fetchToDeleteBoats.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

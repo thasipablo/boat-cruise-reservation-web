@@ -20,7 +20,7 @@ function Navbar() {
         </li>
 
         <li className="nav-item">
-          <a className="nav-link text-dark" href="/">DELETE MOTOCYCLE</a>
+          <a className="nav-link text-dark" href="/delete-boat">DELETE BOAT</a>
         </li>
         <li>
           <LogoutButton />

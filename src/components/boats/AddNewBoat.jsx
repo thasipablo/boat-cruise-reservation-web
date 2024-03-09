@@ -34,7 +34,6 @@ const AddNewBoat = () => {
       .catch((err) => {
         console.error('Add New Boat Error:', err);
         if (err.response) {
-          console.error('Server Response:', err.response);
           console.error('Server Response Data:', err.response.data);
         }
       });
