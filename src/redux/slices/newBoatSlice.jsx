@@ -5,7 +5,7 @@ import axios from 'axios';
 export const newBoat = createAsyncThunk('boat/addNewBoat', async (boatData) => {
   console.log(boatData);
   try {
-    const response = await axios.post('http://localhost:3000/api/boats', boatData);
+    const response = await axios.post('https://react-rails-api-he81.onrender.com/api/boats', boatData);
     console.log(boatData);
     localStorage.setItem('boat', JSON.stringify(response.data.data));
     return response.data.data;

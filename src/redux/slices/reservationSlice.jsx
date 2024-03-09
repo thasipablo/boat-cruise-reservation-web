@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const sendReservation = createAsyncThunk('reservation/sendReservation', async (book) => {
-  const response = await axios.post('http://localhost:3000/api/reservations', {
+  const response = await axios.post('https://react-rails-api-he81.onrender.com/api/reservations', {
     user_id: book.user_id,
     boat_id: book.boat_id,
     city: book.city,
