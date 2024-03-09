@@ -88,7 +88,7 @@ To get a local copy up and running, follow these steps.
 In order to run this project you need:
 
 - To install ruby on your PC. You can read [this](https://rubyinstaller.org/downloads/) documentation on how to do so
-- To install sqlite3 on your PC. You can read [this](https://www.sqlite.org/download.html) documentation on how to do so
+- To install postgresql on your PC. You can read [this](https://www.postgresql.org/docs/) documentation on how to do so
 - Know how to navigate directories or folders at the CLI.
 - Know how to get the URL(https/ssh) of a repository on GitHub.
 - You should have a code editor installed, preferably VSCode.
@@ -108,7 +108,7 @@ Install this project with:
 
 ```sh
   cd boat-cruise-reservation-web
-  bundle install
+  npm install
 ```
 
 ### Usage
@@ -116,28 +116,8 @@ Install this project with:
 To run the project, execute the following command:
 
 ```sh
-  rails server
+  npm run dev
 ```
-
-### Run tests
-
-To run tests, run the following command:
-
-```sh
- rspec spec
-```
-
-### Deployment
-
-You can deploy this project using:
-
-<!--
-Example:
-
-```sh
-
-```
- -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
