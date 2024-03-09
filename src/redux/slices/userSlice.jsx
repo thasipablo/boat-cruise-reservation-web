@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const loginUser = createAsyncThunk('login/loginUser', async (userData) => {
   try {
-    const response = await axios.post('https://boat-cruise-reservation-api.onrender.com/api/users/login', userData);
+    const response = await axios.post('http://localhost:3000/api/users/login', userData);
     localStorage.setItem('user', JSON.stringify(response.data.data));
     console.log('Fetched data in loginUser:', response.data.data);
     return response.data.data;
@@ -16,7 +16,7 @@ export const loginUser = createAsyncThunk('login/loginUser', async (userData) =>
 
 export const registerUser = createAsyncThunk('register/registerUser', async (userData, { rejectWithValue }) => {
   try {
-    const response = await axios.post('https://boat-cruise-reservation-api.onrender.com/api/users', userData);
+    const response = await axios.post('http://localhost:3000/api/users', userData);
     localStorage.setItem('user', JSON.stringify(response.data.data));
     return response.data.data; // Return the user data after successful registration
   } catch (error) {

@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchBoats = createAsyncThunk('boats/fetchBoats', async () => {
-  const response = await fetch('https://boat-cruise-reservation-api.onrender.com/api/boats');
+  const response = await fetch('http://localhost:3000/api/boats');
   return response.json();
 });
 
 export const fetchToDeleteBoats = createAsyncThunk('boats/fetchToDeleteBoats', async (boatId) => {
   try {
     console.log('Deleting boat with id:', boatId); // Log boat deletion
-    const response = await fetch(`https://boat-cruise-reservation-api.onrender.com/api/boats/${boatId}`, {
+    const response = await fetch(`http://localhost:3000/api/boats/${boatId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
