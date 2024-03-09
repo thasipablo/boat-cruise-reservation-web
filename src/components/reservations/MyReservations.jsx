@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import {
-  Container, Row, Col, Card, ListGroup,
+  Container,
+  Row,
+  Col,
+  Card,
+  ListGroup,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMyReservations } from '../../redux/slices/myReservationSlice';
@@ -8,18 +12,13 @@ import { fetchMyReservations } from '../../redux/slices/myReservationSlice';
 function MyReservations() {
   const dispatch = useDispatch();
   const reservations = useSelector((state) => state.myReservations.reservations);
-  const isLoading = useSelector((state) => state.myReservations.loading);
 
   useEffect(() => {
     dispatch(fetchMyReservations());
   }, [dispatch]);
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
   return (
-    <Container>
+    <Container className="mt-5">
       <Row>
         {reservations && reservations.length > 0 ? (
           reservations.map((reservation) => (
@@ -29,18 +28,21 @@ function MyReservations() {
                   <Card.Title>{`Reservation ID: ${reservation.id}`}</Card.Title>
                   <ListGroup variant="flush">
                     <ListGroup.Item>
-                      <strong>Date:</strong>
-                      {' '}
+                      <strong>
+                        Date:
+                      </strong>
                       {reservation.date}
                     </ListGroup.Item>
                     <ListGroup.Item>
-                      <strong>City:</strong>
-                      {' '}
+                      <strong>
+                        City:
+                      </strong>
                       {reservation.city}
                     </ListGroup.Item>
                     <ListGroup.Item>
-                      <strong>Boat Name:</strong>
-                      {' '}
+                      <strong>
+                        Boat Id:
+                      </strong>
                       {reservation.boat_id}
                     </ListGroup.Item>
                   </ListGroup>
@@ -50,7 +52,7 @@ function MyReservations() {
           ))
         ) : (
           <Col>
-            <p>No reservations found.</p>
+            {reservations ? 'Loading...' : 'No reservations found!'}
           </Col>
         )}
       </Row>
