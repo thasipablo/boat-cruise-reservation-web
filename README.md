@@ -73,7 +73,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- N/A
+- [Boat Reservation App](https://boatfrancknesskennethpablo.netlify.app)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

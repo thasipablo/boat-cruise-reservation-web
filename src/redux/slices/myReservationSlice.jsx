@@ -10,7 +10,7 @@ export const fetchMyReservations = createAsyncThunk(
       const user = userString ? JSON.parse(userString) : null;
 
       if (user) {
-        const url = `http://localhost:3000/api/reservations/${user.name}`;
+        const url = `https://boat-cruise-reservation-api.onrender.com/api/reservations/${user.name}`;
         const response = await axios.get(url);
         console.log(response);
         return response.data;
