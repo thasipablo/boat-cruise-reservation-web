@@ -1,0 +1,18 @@
+// vite.config.js
+import { defineConfig } from "file:///D:/Microverse/Module6/bb/boat-cruise-reservation-web/node_modules/vite/dist/node/index.js";
+import react from "file:///D:/Microverse/Module6/bb/boat-cruise-reservation-web/node_modules/@vitejs/plugin-react/dist/index.mjs";
+import eslintPlugin from "vite-plugin-eslint";
+var vite_config_default = defineConfig({
+  plugins: [
+    react(),
+    eslintPlugin({
+      cache: false,
+      include: ["./src/**/*.js", "./src/**/*.jsx"],
+      exclude: []
+    })
+  ]
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcuanMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCJEOlxcXFxNaWNyb3ZlcnNlXFxcXE1vZHVsZTZcXFxcYmJcXFxcYm9hdC1jcnVpc2UtcmVzZXJ2YXRpb24td2ViXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ZpbGVuYW1lID0gXCJEOlxcXFxNaWNyb3ZlcnNlXFxcXE1vZHVsZTZcXFxcYmJcXFxcYm9hdC1jcnVpc2UtcmVzZXJ2YXRpb24td2ViXFxcXHZpdGUuY29uZmlnLmpzXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ltcG9ydF9tZXRhX3VybCA9IFwiZmlsZTovLy9EOi9NaWNyb3ZlcnNlL01vZHVsZTYvYmIvYm9hdC1jcnVpc2UtcmVzZXJ2YXRpb24td2ViL3ZpdGUuY29uZmlnLmpzXCI7aW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAndml0ZSc7XHJcbmltcG9ydCByZWFjdCBmcm9tICdAdml0ZWpzL3BsdWdpbi1yZWFjdCc7XHJcbmltcG9ydCBlc2xpbnRQbHVnaW4gZnJvbSAndml0ZS1wbHVnaW4tZXNsaW50JztcclxuXHJcbi8vIGh0dHBzOi8vdml0ZWpzLmRldi9jb25maWcvXHJcbmV4cG9ydCBkZWZhdWx0IGRlZmluZUNvbmZpZyh7XHJcbiAgcGx1Z2luczogW1xyXG4gICAgcmVhY3QoKSxcclxuICAgIGVzbGludFBsdWdpbih7XHJcbiAgICAgIGNhY2hlOiBmYWxzZSxcclxuICAgICAgaW5jbHVkZTogWycuL3NyYy8qKi8qLmpzJywgJy4vc3JjLyoqLyouanN4J10sXHJcbiAgICAgIGV4Y2x1ZGU6IFtdLFxyXG4gICAgfSksXHJcbiAgXSxcclxufSk7XHJcbiJdLAogICJtYXBwaW5ncyI6ICI7QUFBd1YsU0FBUyxvQkFBb0I7QUFDclgsT0FBTyxXQUFXO0FBQ2xCLE9BQU8sa0JBQWtCO0FBR3pCLElBQU8sc0JBQVEsYUFBYTtBQUFBLEVBQzFCLFNBQVM7QUFBQSxJQUNQLE1BQU07QUFBQSxJQUNOLGFBQWE7QUFBQSxNQUNYLE9BQU87QUFBQSxNQUNQLFNBQVMsQ0FBQyxpQkFBaUIsZ0JBQWdCO0FBQUEsTUFDM0MsU0FBUyxDQUFDO0FBQUEsSUFDWixDQUFDO0FBQUEsRUFDSDtBQUNGLENBQUM7IiwKICAibmFtZXMiOiBbXQp9Cg==
